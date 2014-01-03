@@ -1,4 +1,4 @@
-CMPE1300Demos
+CMPE1300.Public
 =============
 
 Fundamentals of Programming Demos
