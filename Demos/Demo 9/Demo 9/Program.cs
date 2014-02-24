@@ -30,7 +30,7 @@ namespace Demo_9
             if (argument > 0)
             {
                 root1 = (-b + Math.Sqrt(argument))/(2.0 * a); //OK to use ints, because argument is already a double
-                root2 = (-b - Math.Sqrt(argument))/(2.0 * a);
+                root2 = (-b - Math.Sqrt(argument))/(2.0 *   a);
                 Console.WriteLine("Real Roots: {0}, {1}", root1, root2);
             }
             else if (argument == 0)
