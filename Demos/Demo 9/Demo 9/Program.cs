@@ -18,7 +18,7 @@ namespace Demo_9
             double root1 = 0;
             double root2 = 0;
 
-            a = GetInt("First coefficient (a)?");
+            a = GetInt("First coefficient (a)?", -100, 100);
             b = GetInt("First coefficient (b)?");
             c = GetInt("First coefficient (c)?");
 
@@ -52,7 +52,8 @@ namespace Demo_9
         }
 
 
-        static public int GetInt(string prompt)
+        static private int GetInt(string prompt,
+                int lowerBound = -10, int upperBound = 10)
         {
             string input = null;
             bool badIn = false;
@@ -62,19 +63,24 @@ namespace Demo_9
                 Console.Write(prompt);
                 input = Console.ReadLine();
                 badIn = int.TryParse(input, out output);
+                if (!badIn)
+                    Console.Error.WriteLine("I was expecting an Integer.");
+                else if (output < lowerBound || output > upperBound)
+                    Console.Error.WriteLine("Please enter a value between {0} and {1}, inclusive",
+                        lowerBound, upperBound);
             }
-            while (!badIn);
+            while (!badIn || output < lowerBound || output > upperBound);
             return output;
         }
 
-        static public void GetKey(string prompt = "")
+        static private void GetKey(string prompt = "")
         {
             if (prompt == "") prompt = "Press any key to continue";
             Console.Write(prompt);
             Console.ReadKey(true);
         }
 
-        static public void GetKeyInfo()
+        static private void GetKeyInfo()
         {
             Console.Write("Press a Key");
             ConsoleKeyInfo cki = Console.ReadKey(true);
